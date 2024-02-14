@@ -1,0 +1,8 @@
+.messages{
+    display: flex;
+    scrollbar-width: none;
+    /* background-csolor: black; */
+    height: 100%;
+    flex-direction: column;
+    overflow-y: scroll;
+}

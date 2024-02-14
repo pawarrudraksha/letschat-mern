@@ -9595,6 +9595,11 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
+react-scrollable-feed@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-scrollable-feed/-/react-scrollable-feed-2.0.1.tgz#4f38c07c6a984b025d5ab2a812933622b1cb10f0"
+  integrity sha512-cCcR47TPpjI6tZELchddGlvBQT3CQT2AyMfhRCHS4TFrEHEVH90Yj6Nxg43LXqXO2YVzNIDtbRckYFl0t4hgdQ==
+
 react-style-singleton@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-style-singleton/-/react-style-singleton-2.2.1.tgz#f99e420492b2d8f34d38308ff660b60d0b1205b4"
