@@ -1,13 +1,14 @@
 import { Box, Button, Stack, Text, useToast } from '@chakra-ui/react'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { ChatState } from '../../context/ChatProvider'
+import { ChatState } from '../context/ChatProvider'
 import { AddIcon } from '@chakra-ui/icons'
 import ChatLoading from './ChatLoading'
-import { getSender } from '../../config/ChatLogic'
+import { getSender } from '../config/ChatLogic'
+import GroupChatModal from './miscellaneous/GroupChatModal'
 
 function MyChats() {
-  const {user,selectedChat,setSelectedChat,chats,setChats}=ChatState()
+  const {user,selectedChat,setSelectedChat,chats,setChats,fetchAgain}=ChatState()
   const [loggedUser,setLoggedUser]=useState()
   const toast=useToast()
   const fetchChats=async()=>{
@@ -34,7 +35,7 @@ function MyChats() {
   useEffect(()=>{
     setLoggedUser(JSON.parse(localStorage.getItem("userInfo")))
     fetchChats()
-  },[])
+  },[fetchAgain])
   return (
     <Box
       display={{base:selectedChat?"none":"flex",md:"flex"}}
@@ -57,13 +58,15 @@ function MyChats() {
         alignItems={"center"}
       >
         My Chats 
-        <Button
-          display={"flex"}
-          fontSize={{base:"17px",md:"10px",lg:"17px"}}
-          rightIcon={<AddIcon/>}
-        >
-          New Group Chat
-        </Button>
+        <GroupChatModal>
+          <Button
+            display={"flex"}
+            fontSize={{base:"17px",md:"10px",lg:"17px"}}
+            rightIcon={<AddIcon/>}
+            >
+            New Group Chat
+          </Button>
+        </GroupChatModal>
       </Box>
       <Box
         display={"flex"}
@@ -79,7 +82,7 @@ function MyChats() {
           chats?(
             <Stack>
               {
-                chats.map((chat)=>(
+                chats?.map((chat)=>(
                   <Box
                     onClick={()=>setSelectedChat(chat)}
                     cursor={"pointer"}
@@ -88,9 +91,9 @@ function MyChats() {
                     px={3}
                     py={2}
                     borderRadius={"lg"}
-                    key={chat._id}
+                    key={chat?._id}
                   >
-                    <Text>{!chat.isGroupChat ?getSender(loggedUser,chat.users) :chat.chatName}</Text>
+                    <Text>{!chat?.isGroupChat ?getSender(loggedUser,chat?.users) :chat?.chatName}</Text>
                   </Box>
                 ))
               }

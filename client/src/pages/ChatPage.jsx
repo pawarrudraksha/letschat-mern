@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { ChatState } from '../context/ChatProvider'
-import ChatBox from '../components/miscellaneous/ChatBox'
-import MyChats from '../components/miscellaneous/MyChats'
 import SideDrawer from '../components/miscellaneous/SideDrawer'
 import { Box } from '@chakra-ui/react'
+import MyChats from '../components/MyChats'
+import ChatBox from '../components/ChatBox'
 
 function ChatPage() {
    const {user}=ChatState()
@@ -18,8 +18,8 @@ function ChatPage() {
                 h={"91.5vh"}
                 p={"10px"}
             >
-                {user && <MyChats/>}
-                {user && <ChatBox/>}
+                {user && <MyChats />}
+                {user && <ChatBox />}
             </Box>
         </div>
     )

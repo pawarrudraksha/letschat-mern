@@ -6,8 +6,8 @@ import { ChatState } from '../../context/ChatProvider';
 import ProfileModal from './ProfileModal';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import ChatLoading from './ChatLoading';
 import UserListItem from '../UserAvatar/UserListItem';
+import ChatLoading from '../ChatLoading';
 
 
 function SideDrawer() {
@@ -151,9 +151,9 @@ function SideDrawer() {
             <ChatLoading/>:(
               searchResult?.map(user=>(
                 <UserListItem
-                  key={user._id}
+                  key={user?._id}
                   user={user}
-                  handleFunction={()=>accessChat(user._id)}
+                  handleFunction={()=>accessChat(user?._id)}
                 />
               ))
             )
