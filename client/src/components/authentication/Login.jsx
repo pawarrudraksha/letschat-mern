@@ -80,8 +80,8 @@ function Login() {
             colorScheme='red'
             width={"100%"}
             onClick={()=>{
-                setEmail('guest@example.com')
-                setPassword('123456')
+                setEmail('rudra12@email.com')
+                setPassword('12345678')
             }}
             isLoading={loading}
           >
